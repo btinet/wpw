@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app.title|default('title') }}{% endblock %}
+
+{% block content %}
+    {% block header %}
+        {{ include('_component/_navbar.html.twig') }}
+    {% endblock %}
+
+    {% block body %}
+    replace  body
+    {% endblock %}
+
+    {% block footer %}
+        <footer>
+            <div class="container">
+                <span>Footer</span>
+            </div>
+        </footer>
+    {% endblock %}
+{% endblock %}
