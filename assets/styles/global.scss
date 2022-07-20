@@ -1,7 +1,112 @@
 // assets/styles/global.scss
 
-// customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
+// IBM Plex
+//======================================================================================================================
 
-// the ~ allows you to reference things in node_modules
-@import "~bootstrap/scss/bootstrap";
+// Font Prefix
+$font-prefix: "~@ibm/plex";
+
+// Font Collection
+@import "~@ibm/plex/scss/serif/index";
+@import "~@ibm/plex/scss/sans/index";
+@import "~@ibm/plex/scss/mono/index";
+
+
+
+$font-family-base:            'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+$font-family-sans-serif:      'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+$font-family-monospace:       'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
+$font-size-base: .85rem;
+$line-height-base: 1.4;
+$font-weight-base:            300;
+$font-weight-bold:            700;
+
+// Basic system
+@import "~bootstrap/scss/functions";
+
+
+// Optional variable overrides here
+$custom-color: #df711b;
+$red: #d44457;
+$custom-theme-colors: (
+        "custom": $custom-color
+);
+
+$nav-link-color: rgba(255,255,255,.6);
+$nav-link-hover-color: $red;
+$nav-link-font-weight: 300;
+
+// Variables come next
+@import "~bootstrap/scss/variables";
+
+$body-bg: #191919;
+$body-color: $white;
+  // Optional Sass map overrides here
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);
+
+// Followed by our default maps
+// @import "maps";
+
+#global-navbar,#local-navbar{
+  color: rgba(255,255,255,.6);
+  text-transform: uppercase;
+}
+
+#global-navbar{
+  font-size: 16px;
+  height: 72px;
+}
+
+#local-navbar{
+  font-size: 14px;
+  background-color: #242424;
+}
+
+#legal{
+  background-color: #0e0e0e;
+}
+
+#copyright{
+  background-color: #000;
+}
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/offcanvas";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
