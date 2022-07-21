@@ -1,34 +1,23 @@
 <nav id="global-navbar" class="bg-black">
     <div class="container h-100">
         <div class="row h-100">
-            <div id="global-navbar-title-wrapper" class="col-lg-2 col-6 d-flex  align-items-center">
+            <div id="global-navbar-title-wrapper" class="col-lg-2 col-4 d-flex  align-items-center">
                 <img src="{{ asset('build/images/logo/wp_logo_dark.png') }}" alt="Wagner Pictures Logo" width="32px">
             </div>
             <div id="global-navbar-nav-wrapper" class="col-lg-8 d-none d-lg-block align-items-center">
                 <div class="nav justify-content-center align-items-center h-100" id="nav-tab" role="tablist">
-                    {% for item in global_navigation %}
-                        <a class="nav-link py-4" id="nav-{{ item.slug }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ item.slug }}" type="button" role="tab" aria-controls="nav-{{ item.slug }}" aria-selected="false">{{ item.label }}</a>
-                    {% endfor %}
+                    {{ knp_menu_render('main',{'depth': 1,'allow_safe_labels': true}) | raw }}
                 </div>
             </div>
-            <div id="global-navbar-social-wrapper" class="col-lg-2 col-6 d-flex justify-content-end align-items-center">
-                Social Media
+            <div id="global-navbar-social-wrapper" class="col-lg-2 col-8 d-flex justify-content-end align-items-center">
+                <div class="nav">
+                    <a href="#" class="nav-link"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="nav-link"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="nav-link"><i class="bi bi-youtube"></i></a>
+                    <a href="#" class="nav-link"><i class="bi bi-google"></i></a>
+                </div>
+
             </div>
         </div>
     </div>
 </nav>
-<section id="local-navbar" class="text-light">
-    <div class="container">
-        <div class="tab-content" id="nav-tabContent">
-            {% for item in global_navigation %}
-                    <div class="tab-pane fade" id="nav-{{ item.slug }}" role="tabpanel" aria-labelledby="nav-{{ item.slug }}-tab" tabindex="0">
-                        <a href="#">1</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                    </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>

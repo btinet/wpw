@@ -7,17 +7,59 @@
         {{ include('_component/_navbar.html.twig') }}
     {% endblock %}
 
-    {% block body %}
-    replace  body
-    {% endblock %}
+    <main class="flex-grow-1">
+        {% block body %}
+            replace  body
+        {% endblock %}
+    </main>
+
 
     {% block footer %}
         <footer>
             <div id="legal">
-fff
+                <div class="container">
+                    <div class="row py-5">
+                        <div class="col-6 col-md-4">
+                            <ul class="list-unstyled">
+                                <h6>Unternehmen</h6>
+                                <li class="mb-1"><a class="link-light" href="#">Impressum</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Datenschutz</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Nutzungsbedingungen</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <ul class="list-unstyled">
+                                <h6>Service</h6>
+                                <li class="mb-1"><a class="link-light" href="#">About</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Journal</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Prices</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Downloads</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <ul class="list-unstyled">
+                                <h6>Social Media</h6>
+                                <li class="mb-1"><a class="link-light" href="#">Twitter</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Instagram</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Youtube</a></li>
+                                <li class="mb-1"><a class="link-light" href="#">Google Unternehmensseite</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="copyright">
-                <span>Footer</span>
+                <div class="container">
+                    <div class="row py-3">
+                        <div class="col">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <img src="{{ asset('build/images/logo/wp_logo_dark.png') }}" alt="Wagner Pictures Logo" width="16px" class="me-2">
+                                <small>Copyright &copy; 2021 - 2022 | Wagner Pictures</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
     {% endblock %}

@@ -1,0 +1,11 @@
+easy_admin:
+  entities:
+    Portfolio:
+      # ...
+      list:
+        fields:
+          - { property: 'image', template: '_component/vich_uploader_image.html.twig' }
+      # ...
+      show:
+        fields:
+          - { property: 'image', type: 'image', base_path: '%app.path.portfolio_images%' }

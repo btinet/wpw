@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MenuItemRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -55,6 +57,26 @@ class MenuItem
      * @ORM\ManyToOne(targetEntity=MenuType::class, inversedBy="menuItems")
      */
     private $menuType;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=MenuItem::class, inversedBy="menuItems")
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MenuItem::class, mappedBy="parent")
+     */
+    private $menuItems;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $priority;
+
+    public function __construct()
+    {
+        $this->menuItems = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -126,6 +148,60 @@ class MenuItem
     public function setMenuType(?MenuType $menuType): self
     {
         $this->menuType = $menuType;
+
+        return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getMenuItems(): Collection
+    {
+        return $this->menuItems;
+    }
+
+    public function addMenuItem(self $menuItem): self
+    {
+        if (!$this->menuItems->contains($menuItem)) {
+            $this->menuItems[] = $menuItem;
+            $menuItem->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMenuItem(self $menuItem): self
+    {
+        if ($this->menuItems->removeElement($menuItem)) {
+            // set the owning side to null (unless already changed)
+            if ($menuItem->getParent() === $this) {
+                $menuItem->setParent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(?int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }

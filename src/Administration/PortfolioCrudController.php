@@ -6,7 +6,10 @@ use App\Entity\Portfolio;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
 class PortfolioCrudController extends AbstractCrudController
 {
@@ -19,6 +22,8 @@ class PortfolioCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            ImageField::new('image')->onlyOnIndex()->setBasePath('uploads/images/portfolio/'),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyOnForms(),
             TextField::new('title'),
             TextField::new('description'),
             TextField::new('alt'),
