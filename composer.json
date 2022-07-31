@@ -56,7 +56,12 @@
         "vich/uploader-bundle": "^1.19"
     },
     "config": {
-
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "plesk/composer-command-info": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
         "optimize-autoloader": true,
         "preferred-install": {
             "*": "dist"
