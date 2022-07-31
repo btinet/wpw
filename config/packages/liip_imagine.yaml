@@ -3,15 +3,34 @@ liip_imagine:
     # valid drivers options include "gd" or "gmagick" or "imagick"
     driver: "gd"
 
+
+
     webp:
         generate: true
 
     resolvers:
-        default:
-            web_path: ~
+        image_assets:
+            web_path:
+                # use %kernel.project_dir%/web for Symfony prior to 4.0.0
+                web_root: "%kernel.project_dir%/public"
+                cache_prefix: "media/cache"
+
+    cache: image_assets
 
     filter_sets:
         cache: ~
+
+        featured_post:
+
+            # adjust the image quality to 75%
+            quality: 75
+
+            # list of transformations to apply (the "filters")
+            filters:
+
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [ 1920, 460 ], mode: outbound }
 
         # the name of the "filter set"
         portfolio_grid:
@@ -37,3 +56,14 @@ liip_imagine:
                 # create a thumbnail: set size to 120x90 and use the "outbound" mode
                 # to crop the image when the size ratio of the input differs
                 thumbnail: { size: [ 100, 100 ], mode: outbound }
+
+        media_image_masonry:
+
+            quality: 80
+            filters:
+
+                # use and setup the "downscale" filter
+                downscale:
+
+                    # input 3960x2560px -> output 1980x1280px
+                    max: [ 1280, 720 ]

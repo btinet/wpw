@@ -1,22 +1,23 @@
 <nav id="global-navbar" class="bg-black">
     <div class="container h-100">
         <div class="row h-100">
-            <div id="global-navbar-title-wrapper" class="col-lg-2 col-4 d-flex  align-items-center">
-                <img src="{{ asset('build/images/logo/wp_logo_dark.png') }}" alt="Wagner Pictures Logo" width="32px">
+            <div id="global-navbar-title-wrapper" class="col-lg-3 col-4 d-flex  align-items-center">
+                <a href="{{ path('portfolio_index') }}">
+                    <img src="{{ asset('build/images/logo/wp_logo_dark.png') }}" alt="Wagner Pictures Logo" width="32px">
+                </a>
             </div>
-            <div id="global-navbar-nav-wrapper" class="col-lg-8 d-none d-lg-block align-items-center">
+            <div id="global-navbar-nav-wrapper" class="col-lg-6 d-none d-lg-block align-items-center">
                 <div class="nav justify-content-center align-items-center h-100" id="nav-tab" role="tablist">
                     {{ knp_menu_render('main',{'depth': 1,'allow_safe_labels': true}) | raw }}
                 </div>
             </div>
-            <div id="global-navbar-social-wrapper" class="col-lg-2 col-8 d-flex justify-content-end align-items-center">
+            <div id="global-navbar-social-wrapper" class="col-lg-3 col-8 d-flex justify-content-end align-items-center">
                 <div class="nav">
-                    <a href="#" class="nav-link"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="nav-link"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="nav-link"><i class="bi bi-youtube"></i></a>
-                    <a href="#" class="nav-link"><i class="bi bi-google"></i></a>
+                    {{ render(controller(
+                        'App\\Controller\\ApiController::getSocialMediaLinks'
+                    )) }}
+                    <a data-bs-toggle="offcanvas" href="#offcanvasDark" style="font-size: 1.6em;" role="button" aria-controls="offcanvasDark" class="nav-link d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></a>
                 </div>
-
             </div>
         </div>
     </div>

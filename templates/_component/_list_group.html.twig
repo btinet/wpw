@@ -1,0 +1,31 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-1 my-3">
+        {% for item in items %}
+                <div class="col">
+                        <div class="card bg-black text-white">
+                            {#
+                            <img class="card-img-top" alt="{{ item.description }}" src="{{ asset('build/images/pictures/IMG_0455.jpg')|imagine_filter('featured_post') }}">
+                            #}
+                            <div class="card-body text-center">
+                                    <div class="card-title display-6">{{ item.title }}</div>
+                            </div>
+                            <ul class="list-unstyled">
+                                {% for service_item in item.content %}
+                                    <li class="text-center">
+                                        {{ service_item }}
+                                    </li>
+                                {% else %}
+                                    <li class="list-group-item">Keine weiteren Optionen.</li>
+                                {% endfor %}
+                            </ul>
+                            <div class="card-footer bg-dark text-center">
+                                    <span class="lead">{{ item.price|format_currency(item.currency) }}</span>
+                            </div>
+                        </div>
+                </div>
+
+        {% else %}
+                <div>Noch keine Produkte vorhanden</div>
+        {% endfor %}
+</div>
+
+

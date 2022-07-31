@@ -1,0 +1,14 @@
+
+ch_cookie_consent:
+  title: Cookies auf unserer Website
+  intro: Wir lieben kekse
+  read_more: Mehr erfahren
+  yes: zustimmen
+  no: ablehnen
+  analytics:
+    title: analytische Cookies
+    description: Zur Auswertung der Websitenutzung verwenden wir Google Analytics
+  use_only_functional_cookies: nur funktionale Cookies
+  use_all_cookies: alle erlauben
+  show_details: zeige mehr
+  hide_details: zeige weniger

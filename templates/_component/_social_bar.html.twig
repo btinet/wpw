@@ -1,0 +1,5 @@
+{% for item in items %}
+<a target="_blank" href="{{ item.url }}" class="nav-link d-none d-lg-block"><i class="bi bi-{{ item.icon }}"></i></a>
+{% else %}
+    <span>Keine Links konfiguriert.</span>
+{% endfor %}

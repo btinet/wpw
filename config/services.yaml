@@ -5,6 +5,9 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app.path.portfolio_images: /uploads/images/portfolio
+    app.path.featured_images: /uploads/images/featured
+    app.path.article_images: /uploads/images/article
+    app.path.media_images: /uploads/images/media
 
 services:
     # default configuration for services in *this* file
@@ -26,6 +29,8 @@ services:
         arguments: [ "@knp_menu.factory" ]
         tags:
             - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+            - { name: knp_menu.menu_builder, method: createServiceMenu, alias: service }
+            - { name: knp_menu.menu_builder, method: createLegalMenu, alias: legal }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

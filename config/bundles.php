@@ -20,4 +20,5 @@ return [
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
+    ConnectHolland\CookieConsentBundle\CHCookieConsentBundle::class => ['all' => true],
 ];

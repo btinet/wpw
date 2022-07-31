@@ -13,5 +13,11 @@ import './bootstrap';
 
 require('bootstrap');
 
+import MiniMasonry from "minimasonry";
 
+var masonry = new MiniMasonry({
+    container: '.mm-container',
+    gutter: 5,
+    surroundingGutter: 'false',
+});
 

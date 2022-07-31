@@ -12,6 +12,7 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('global') }}
         {% endblock %}
+        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
     </head>
     <body class="d-flex flex-column h-100">
         {% block content %}{% endblock %}

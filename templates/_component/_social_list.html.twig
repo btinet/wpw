@@ -1,0 +1,5 @@
+{% for item in items %}
+    <li class="mb-1"><a class="link-light" target="_blank" href="{{ item.url }}">{{ item.label }}</a></li>
+{% else %}
+    <span>Keine Links konfiguriert.</span>
+{% endfor %}

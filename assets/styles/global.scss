@@ -16,7 +16,7 @@ $font-prefix: "~@ibm/plex";
 $font-family-base:            'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
 $font-family-sans-serif:      'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
 $font-family-monospace:       'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
-$font-size-base: .85rem;
+$font-size-base: .9rem;
 $line-height-base: 1.4;
 $font-weight-base:            300;
 $font-weight-bold:            700;
@@ -56,6 +56,11 @@ $theme-colors: map-merge($theme-colors, $custom-theme-colors);
   background-color: #666;
   color: white;
 }
+
+article{
+  font-size: 1.2rem;
+}
+
 #myBtnContainer > .btn{color: transparentize($white,.4)!important;}
 
 .nav-link{
@@ -104,6 +109,12 @@ li.current{
 #copyright{
   background-color: #000;
 }
+
+$input-bg: #242424;
+$input-border-color: #0e0e0e;
+$input-focus-bg: rgba(36, 36, 36, 0.92);
+$input-color: $white;
+$input-focus-color: $input-color;
 
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
@@ -204,6 +215,52 @@ li.current{
     top: 0;
   }
 }
+
+/* Main CSS */
+.grid-wrapper > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid-wrapper > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 250px;
+  grid-auto-flow: dense;
+}
+.grid-wrapper .wide {
+  grid-column: span 2;
+}
+.grid-wrapper .tall {
+  grid-row: span 2;
+}
+.grid-wrapper .big {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.responsive-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+.responsive-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 // Layout & components
 @import "~bootstrap/scss/root";

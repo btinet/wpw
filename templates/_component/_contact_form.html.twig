@@ -1,0 +1,15 @@
+<div class="my-3">
+        {% set flashbag_notices = app.session.flashbag.get('notice') %}
+        {% if flashbag_notices is not empty %}
+                <div class="alert alert-success">
+                        <div class="flash-notice">
+                                {% for notice in flashbag_notices %}
+                                        {{notice}}
+                                {% endfor %}
+                        </div>
+                </div>
+        {% endif %}
+
+
+        {{ form(form) }}
+</div>

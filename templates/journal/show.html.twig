@@ -1,0 +1,70 @@
+{% extends '_app.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+    <section id="main">
+        <div id="journal-header" style="background-color: #0e0e0e">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center my-5 py-lg-5">
+                            {% if prev %}
+                                <a href="{{ path('journal_show',{'slug':prev.slug}) }}" class="link-light text-decoration-none"><i class="bi bi-chevron-left" style="font-size: 3em"></i></a>
+                            {% else %}
+                                <span class="text-muted"><i class="bi bi-chevron-left" style="font-size: 3em"></i></span>
+                            {% endif %}
+                            <h1 class="display-6 text-center mx-3">{{ article.title }}</h1>
+                            {% if next %}
+                                <a href="{{ path('journal_show',{'slug':next.slug}) }}" class="link-light text-decoration-none"><i class="bi bi-chevron-right" style="font-size: 3em"></i></a>
+                            {% else %}
+                                <span class="text-muted"><i class="bi bi-chevron-right" style="font-size: 3em"></i></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if article.hasYoutubeVideo %}
+            <section id="youtube-video" class="bg-black">
+                <div class="container p-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="responsive-video">
+                                <iframe id="ytplayer" type="text/html" class="img-fluid" width="1280" height="720"
+                                        src="https://www.youtube.com/embed/{{ article.youtubeVideoUrl }}?showinfo=0&controls=0"
+                                        frameborder="0" allow="fullscreen" allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-12 col-lg-6 offset-lg-3">
+                    <article class="mb-3">
+                        <span class="small">{{ article.updated|ago }} aktualisiert</span>
+                        <h2>{{ article.description }}</h2>
+                        {{ article.content|raw }}
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-0 mb-1">
+            <div class="grid-wrapper">
+                {% if article.mediaImages is not empty %}
+                    {% for image in article.mediaImages %}
+                        <div class="{{ image.size|default('tall') }}">
+                            <img src="{{ vich_uploader_asset(image)|imagine_filter('media_image_masonry') }}" alt="{{ image.alt }}" class="img-fluid">
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

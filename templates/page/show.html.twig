@@ -1,0 +1,38 @@
+{% extends '_app.html.twig' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block body %}
+    <section id="main">
+
+        <div class="container-fluid p-0">
+            {% if page.image %}
+                <img src="{{ vich_uploader_asset(page)|imagine_filter('featured_post') }}" alt="{{ page.alt }}" class="img-fluid mb-5">
+            {% else %}
+                <div class="mb-5"></div>
+            {% endif %}
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 offset-lg-3">
+                    {% if page.description %}
+                        <h2 class="h4 mb-3">{{ page.description }}</h2>
+                    {% endif %}
+                    <article class="mb-5">
+                        {{ page.content|raw }}
+                        {% if page.hasContactForm %}
+                            {{ include('_component/_contact_form.html.twig',{'form':form}) }}
+                        {% endif %}
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            {% if page.hasProducts %}
+                {{ render(controller(
+                    'App\\Controller\\ApiController::getProducts'
+                )) }}
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

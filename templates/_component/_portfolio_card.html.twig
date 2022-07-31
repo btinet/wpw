@@ -1,5 +1,5 @@
 {% for item in portfolio %}
-    <div class="card bg-black shadow-hover column {% for tag in item.tags %}{{ tag.slug }} {% endfor %}">
+    <div class="card bg-transparent shadow-hover column {% for tag in item.tags %}{{ tag.slug }} {% endfor %}">
         <img
                 src="{{ vich_uploader_asset(item)|imagine_filter('portfolio_grid_small') }}"
                 {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {

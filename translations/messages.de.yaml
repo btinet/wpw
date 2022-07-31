@@ -1,0 +1,66 @@
+Portfolio: Portfolio
+Journal: Journal
+About: Über mich
+Prices: Preise
+Contact: Kontakt
+Name: Name
+Email: E-Mail-Adresse
+Subject: Betreff
+Message: Nachricht
+Submit: Absenden
+Impressum: Impressum
+Datenschutz: Datenschutz
+Nutzungsbedingungen: Nutzungsbedingungen
+Downloads: Downloads
+Website: Website
+Dashboard: Übersicht
+configuration: Konfiguration
+menu_items: Menüpunkte
+menu_types: Menüs
+socialMediaLinks: Social-Media-Links
+routes: Routen
+portfolio: Portfolio
+media images: Medien
+tags: Tags
+Tag: Tag
+Content: Inhalte
+Project: Projekt
+article: Artikel
+Articles: Artikel
+Article: Artikel
+Size: Größe
+MediaImage: Medien
+Parent: Übergeordnet
+MenuType: Menü
+MenuItem: Menüeintrag
+Priority: Priorität
+Menu Type: Menü
+Has Page: hat Beitragsseite
+Page Slug: Seite
+Has Link: hat Link
+Link: Link
+Has Children: Hat untergeordnete Elemente
+Children: Untergeordnete Elemente
+SocialMediaLink: Social-Media-Links
+Tags: Tags
+URL: URL
+Is Featured: Beitragsbild verwenden
+Route: Route
+Route Name: Maschinenname
+Route Param: Parameter
+Icon: Icon
+pages: Seiten
+Page: Seite
+Image: Bild
+Title: Überschrift
+Has Articles: Hat Artikel
+Has Contact Form: Hat Kontaktformular
+Has Youtube Video: Hat Youtubevideo
+Youtube Video Url: Youtube Video-URL
+Media Images: Bilder
+Is Published: Veröffentlichen
+Alt: Alternative Beschreibung
+categories: Kategorien
+Category: Kategorie
+Label: Bezeichnung
+Description: Beschreibung

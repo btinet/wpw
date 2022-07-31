@@ -5,6 +5,7 @@ namespace App\Administration;
 use App\Entity\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -24,6 +25,10 @@ class MenuItemCrudController extends AbstractCrudController
             AssociationField::new('route'),
             NumberField::new('priority'),
             AssociationField::new('menuType'),
+            BooleanField::new('hasPage'),
+            AssociationField::new('pageSlug'),
+            BooleanField::new('hasLink'),
+            TextField::new('link')
         ];
     }
 

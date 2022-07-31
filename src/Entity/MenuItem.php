@@ -73,6 +73,31 @@ class MenuItem
      */
     private $priority;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $hasPage;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $hasArticle;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $hasLink;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Page::class, inversedBy="menuItems")
+     */
+    private $pageSlug;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $link;
+
     public function __construct()
     {
         $this->menuItems = new ArrayCollection();
@@ -202,6 +227,66 @@ class MenuItem
     public function setPriority(?int $priority): self
     {
         $this->priority = $priority;
+
+        return $this;
+    }
+
+    public function hasPage(): ?bool
+    {
+        return $this->hasPage;
+    }
+
+    public function setHasPage(?bool $hasPage): self
+    {
+        $this->hasPage = $hasPage;
+
+        return $this;
+    }
+
+    public function isHasArticle(): ?bool
+    {
+        return $this->hasArticle;
+    }
+
+    public function setHasArticle(?bool $hasArticle): self
+    {
+        $this->hasArticle = $hasArticle;
+
+        return $this;
+    }
+
+    public function isHasLink(): ?bool
+    {
+        return $this->hasLink;
+    }
+
+    public function setHasLink(?bool $hasLink): self
+    {
+        $this->hasLink = $hasLink;
+
+        return $this;
+    }
+
+    public function getPageSlug(): ?Page
+    {
+        return $this->pageSlug;
+    }
+
+    public function setPageSlug(?Page $pageSlug): self
+    {
+        $this->pageSlug = $pageSlug;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }

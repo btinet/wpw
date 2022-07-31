@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Page;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,15 +18,18 @@ class PageController extends AbstractController
      */
     public function index(): Response
     {
-        $globalNavigation = [
-            'portfolio' => ['label' => 'Portfolio','slug'=>'portfolio'],
-            'journal' => ['label' => 'Journal','slug'=>'journal'],
-            'about' => ['label' => 'Über','slug'=>'about'],
-            'contact' => ['label' => 'Kontakt','slug'=>'contact'],
-        ];
 
-        return $this->render('page/index.html.twig', [
-            'global_navigation' => $globalNavigation
+        return $this->redirectToRoute('portfolio_index');
+    }
+
+    /**
+     * @Route("/page/{slug}", name="show")
+     */
+    public function show(Page $page): Response
+    {
+
+        return $this->render('page/show.html.twig',[
+            'page' => $page
         ]);
     }
 }

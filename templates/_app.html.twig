@@ -3,6 +3,13 @@
 {% block title %}{{ app.title|default('title') }}{% endblock %}
 
 {% block content %}
+
+    {% block offcanvas %}
+        {{ include('_component/_offcanvas_menu.html.twig') }}
+    {% endblock %}
+
+    {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set',{ 'locale' : 'de' })) }}
+
     {% block header %}
         {{ include('_component/_navbar.html.twig') }}
     {% endblock %}
@@ -20,30 +27,19 @@
                 <div class="container">
                     <div class="row py-5">
                         <div class="col-6 col-md-4">
-                            <ul class="list-unstyled">
-                                <h6>Unternehmen</h6>
-                                <li class="mb-1"><a class="link-light" href="#">Impressum</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Datenschutz</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Nutzungsbedingungen</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Contact</a></li>
-                            </ul>
+                            <h6>Unternehmen</h6>
+                            {{ knp_menu_render('legal',{'depth': 1,'allow_safe_labels': true}) | raw }}
                         </div>
                         <div class="col-6 col-md-4">
-                            <ul class="list-unstyled">
-                                <h6>Service</h6>
-                                <li class="mb-1"><a class="link-light" href="#">About</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Journal</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Prices</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Downloads</a></li>
-                            </ul>
+                            <h6>Service</h6>
+                            {{ knp_menu_render('service',{'depth': 1,'allow_safe_labels': true}) | raw }}
                         </div>
                         <div class="col-6 col-md-4">
                             <ul class="list-unstyled">
                                 <h6>Social Media</h6>
-                                <li class="mb-1"><a class="link-light" href="#">Twitter</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Instagram</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Youtube</a></li>
-                                <li class="mb-1"><a class="link-light" href="#">Google Unternehmensseite</a></li>
+                                {{ render(controller(
+                                    'App\\Controller\\ApiController::getSocialMediaLinksAsList'
+                                )) }}
                             </ul>
                         </div>
                     </div>
@@ -63,4 +59,5 @@
             </div>
         </footer>
     {% endblock %}
+
 {% endblock %}
