@@ -8,6 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -19,7 +22,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/send-email/{slug}", name="send_email")
      */
-    public function sendEmail(Page $page, Request $request, EntityManagerInterface $entityManager): Response
+    public function sendEmail(Page $page, Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $contact = new Contact();
         $contactForm = $this->createForm('App\Form\ContactType', $contact);
@@ -27,6 +30,20 @@ class ContactController extends AbstractController
         $contactForm->handleRequest($request);
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $contact = $contactForm->getData();
+
+            $receiver = new Address($contact->getEmail(),$contact->getName());
+
+            $email = (new Email())
+                ->from($receiver)
+                ->to('service@wagnerpictures.com')
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject($contact->getSubject())
+                ->text($contact->getMessage());
+
+            $mailer->send($email);
 
             $entityManager->persist($contact);
             $entityManager->flush();
