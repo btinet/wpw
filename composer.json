@@ -58,7 +58,7 @@
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
-            "plesk/composer-command-info": false,
+            "plesk/composer-command-info": true,
             "symfony/flex": true,
             "symfony/runtime": true
         },
