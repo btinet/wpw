@@ -7,7 +7,7 @@
 
         <div class="container-fluid p-0">
             {% if page.image %}
-                <img src="{{ vich_uploader_asset(page)|imagine_filter('featured_post') }}" alt="{{ page.alt }}" class="img-fluid mb-5">
+                <img src="{{ vich_uploader_asset(page)|imagine_filter('featured_post') }}" alt="{{ page.alt }}" class="img-fluid mb-5 w-100">
             {% else %}
                 <div class="mb-5"></div>
             {% endif %}
