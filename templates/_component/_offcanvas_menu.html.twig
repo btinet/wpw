@@ -1,6 +1,10 @@
 <div class="offcanvas offcanvas-end bg-black text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="offcanvasDarkLabel">
+            <a href="{{ path('portfolio_index') }}">
+                <img src="{{ asset('build/images/logo/wp_logo_dark.png') }}" alt="Wagner Pictures Logo" width="32px">
+            </a>
+        </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
