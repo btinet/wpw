@@ -4,6 +4,7 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <p>Place offcanvas content here.</p>
+        {% set menuItem = knp_menu_get('main', [], {'vertical': 'true'}) %}
+        {{ knp_menu_render(menuItem) | raw }}
     </div>
 </div>

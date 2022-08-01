@@ -27,11 +27,16 @@ class MenuBuilder
         $menuEntity = $menuRepository->findOneBy([
             'slug' => 'main'
         ]);
+        $vertical = '';
+        if($options['vertical'] === 'true')
+        {
+            $vertical = 'flex-column';
+        }
 
         $menu = $this->factory->createItem('root')
             ->setExtra('translation_domain', 'menu');
         $menu->setChildrenAttributes([
-            'class' => 'nav  justify-content-center d-flex'
+            'class' => 'nav '.$vertical.' justify-content-center d-flex'
         ]);
 
         if($menuEntity)
