@@ -30,7 +30,7 @@ liip_imagine:
 
                 # create a thumbnail: set size to 120x90 and use the "outbound" mode
                 # to crop the image when the size ratio of the input differs
-                thumbnail: { size: [ 1920, 460 ], mode: outbound }
+                thumbnail: { size: [ 2460, 460 ], mode: outbound }
 
         # the name of the "filter set"
         portfolio_grid:
