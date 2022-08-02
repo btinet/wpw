@@ -27,14 +27,16 @@
                 <div class="col column {{ article.category.slug }}">
                     <div class="card  bg-black shadow-hover">
                         {% if article.image %}
-                            <img
-                                    src="{{ vich_uploader_asset(article)|imagine_filter('portfolio_grid_small') }}"
-                                    {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                                        src: vich_uploader_asset(article)|imagine_filter('portfolio_grid')
-                                    }) }}
-                                    alt="{{ article.alt }}"
-                                    class="card-img"
-                            >
+                            <div class="ratio ratio-1x1">
+                                <img
+                                        src="{{ vich_uploader_asset(article)|imagine_filter('portfolio_grid_small') }}"
+                                        {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                                            src: vich_uploader_asset(article)|imagine_filter('portfolio_grid')
+                                        }) }}
+                                        alt="{{ article.alt }}"
+                                        class="card-img"
+                                >
+                            </div>
                         {% endif %}
                         <div class="card-img-overlay d-flex justify-content-between align-items-center text-center flex-column">
                             <a href="{{ path('journal_show',{'slug':article.slug}) }}" class="badge stretched-link text-light bg-dark mb-2">weiterlesen</a>

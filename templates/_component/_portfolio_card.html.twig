@@ -1,13 +1,15 @@
 {% for item in portfolio %}
     <div class="card bg-transparent shadow-hover column {% for tag in item.tags %}{{ tag.slug }} {% endfor %}">
-        <img
-                src="{{ vich_uploader_asset(item)|imagine_filter('portfolio_grid_small') }}"
-                {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
-                    src: vich_uploader_asset(item)|imagine_filter('portfolio_grid')
-                }) }}
-                alt="{{ item.alt }}"
-                class="card-img"
-        >
+        <div class="ratio ratio-1x1">
+            <img
+                    src="{{ vich_uploader_asset(item)|imagine_filter('portfolio_grid_small') }}"
+                    {{ stimulus_controller('symfony/ux-lazy-image/lazy-image', {
+                        src: vich_uploader_asset(item)|imagine_filter('portfolio_grid')
+                    }) }}
+                    alt="{{ item.alt }}"
+                    class="card-img"
+            >
+        </div>
         <div class="card-img-overlay d-flex justify-content-end align-items-center flex-column">
             <h6 class="card-title text-uppercas">{{ item.title }}</h6>
             <div class="card-text text-uppercase">
