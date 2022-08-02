@@ -247,6 +247,16 @@ $input-focus-color: $input-color;
   grid-row: span 2;
 }
 
+.scrolling-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  button {
+    display: inline-block;
+  }
+}
+
 .responsive-video {
   position: relative;
   padding-bottom: 56.25%;
