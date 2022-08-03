@@ -1,0 +1,9 @@
+<div class="list-unstyled mt-auto" style="margin-bottom: 100px">
+    {% for item in items %}
+        <a target="_blank" href="{{ item.url }}" class="text-decoration-none link-light d-block mb-2">
+            <i class="bi bi-{{ item.icon }} me-2" style="font-size: 1.2em"></i>{{ item.label }}
+        </a>
+    {% else %}
+        <span>Keine Links konfiguriert.</span>
+    {% endfor %}
+</div>

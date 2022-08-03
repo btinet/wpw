@@ -7,8 +7,13 @@
         </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-        {% set menuItem = knp_menu_get('main', [], {'vertical': 'true'}) %}
-        {{ knp_menu_render(menuItem) | raw }}
+    <div class="offcanvas-body h-100 d-flex flex-column justify-content-between">
+        <div class="">
+            {% set menuItem = knp_menu_get('main', [], {'vertical': 'true'}) %}
+            {{ knp_menu_render(menuItem) | raw }}
+        </div>
+            {{ render(controller(
+                'App\\Controller\\ApiController::getSocialMediaLinksOffCanvas'
+            )) }}
     </div>
 </div>

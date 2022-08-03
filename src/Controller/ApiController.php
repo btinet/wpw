@@ -19,6 +19,14 @@ class ApiController extends AbstractController
     ]);
     }
 
+    public function getSocialMediaLinksOffCanvas(SocialMediaLinkRepository $linkRepository): Response
+    {
+
+        return $this->render('_component/_social_bar_offcanvas.html.twig',[
+            'items' => $linkRepository->findAll()
+        ]);
+    }
+
     public function getSocialMediaLinksAsList(SocialMediaLinkRepository $linkRepository): Response
     {
 
