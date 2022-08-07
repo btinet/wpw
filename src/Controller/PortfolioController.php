@@ -33,6 +33,8 @@ class PortfolioController extends AbstractController
             'isFeatured' => true
         ]);
 
+        shuffle($portfolio);
+
         return $this->render('portfolio/index.html.twig', [
             'global_navigation' => $globalNavigation,
             'portfolio' => $portfolio,
